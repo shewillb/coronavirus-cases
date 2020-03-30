@@ -11,7 +11,7 @@ import { Cases } from '../models/cases';
 export class CasesComponent implements OnInit {
 
   constructor( private api: ApiService) { }
-  displayedColumns: string[] = ['name', 'age', 'status'];
+  displayedColumns: string[] = ['countryregion', 'confirmed', 'deaths', 'recovered'];
   data: Cases[] = [];
   isLoadingResults = true;
   ngOnInit(): void {

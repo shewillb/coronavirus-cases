@@ -8,7 +8,9 @@ import { Statistic } from './models/statistic';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
-const apiUrl = '/api/';
+const apiUrl = 'https://wuhan-coronavirus-api.laeyoung.endpoint.ainize.ai/jhu-edu/latest?onlyCountries=true';
+
+//https://wuhan-coronavirus-api.laeyoung.endpoint.ainize.ai/jhu-edu/latest?iso2=US&onlyCountries=true
 
 @Injectable({
   providedIn: 'root'
@@ -39,17 +41,17 @@ export class ApiService {
       );
   }
 
-  getCasesById(id: string): Observable<Cases> {
-    const url = `${apiUrl}/${id}`;
-    return this.http.get<Cases>(url).pipe(
+  getCasesById(id: string): Observable<Cases[]> {
+    const url = `${apiUrl}/&iso2=${id}`;
+    return this.http.get<Cases[]>(url).pipe(
       tap(_ => console.log(`fetched cases id=${id}`)),
-      catchError(this.handleError<Cases>(`getCasesById id=${id}`))
+      catchError(this.handleError<Cases[]>(`getCasesById id=${id}`))
     );
   }
 
   addCases(cases: Cases): Observable<Cases> {
     return this.http.post<Cases>(apiUrl, cases, httpOptions).pipe(
-      tap((c: Cases) => console.log(`added cases w/ id=${c._id}`)),
+      tap((c: Cases) => console.log(`added cases w/ id=${c.countryregion}`)),
       catchError(this.handleError<Cases>('addCases'))
     );
   }

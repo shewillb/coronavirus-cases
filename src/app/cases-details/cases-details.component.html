@@ -1,1 +1,40 @@
-<p>cases-details works!</p>
+<div class="example-container mat-elevation-z8">
+    <h2>Corona Virus Cases Details</h2>
+    <div class="example-loading-shade"
+         *ngIf="isLoadingResults">
+      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
+    <div class="button-row">
+      <a mat-flat-button color="primary" [routerLink]="['/cases']"><mat-icon>list</mat-icon></a>
+    </div>
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title><h2>{{cases[0].countryregion}}</h2></mat-card-title>
+        <mat-card-subtitle>Last Updated: {{cases[0].lastupdate}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+          <mat-card class="docs-component-category-list-item" style="margin-top: 20px;">
+            <mat-card-header>
+                <mat-card-title><h2>{{cases[0].confirmed}}</h2></mat-card-title>
+                <mat-card-subtitle>Confirmed Cases</mat-card-subtitle>
+              </mat-card-header>
+          </mat-card>
+          <mat-card class="docs-component-category-list-item">
+            <mat-card-header>
+                <mat-card-title><h2>{{cases[0].deaths}}</h2></mat-card-title>
+                <mat-card-subtitle>Deaths</mat-card-subtitle>
+              </mat-card-header>
+          </mat-card>
+          <mat-card class="docs-component-category-list-item">
+            <mat-card-header>
+                <mat-card-title><h2>{{cases[0].recovered}}</h2></mat-card-title>
+                <mat-card-subtitle>Recovered</mat-card-subtitle>
+              </mat-card-header>
+          </mat-card>
+      </mat-card-content>      
+      <mat-card-actions>
+        <a mat-flat-button color="primary" [routerLink]="['/edit-cases', cases._id]"><mat-icon>edit</mat-icon> Cases</a>
+        <a mat-flat-button color="warn" (click)="deleteCases(cases._id)"><mat-icon>delete</mat-icon> Cases</a>
+      </mat-card-actions>
+    </mat-card>
+  </div>
