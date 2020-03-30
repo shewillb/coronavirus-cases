@@ -52,7 +52,7 @@ module.exports = "<div class=\"container\">\n<router-outlet></router-outlet>\n</
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>cases-details works!</p>\n"
+module.exports = "<div class=\"example-container mat-elevation-z8\">\n    <h2>Corona Virus Cases Details</h2>\n    <div class=\"example-loading-shade\"\n         *ngIf=\"isLoadingResults\">\n      <mat-spinner *ngIf=\"isLoadingResults\"></mat-spinner>\n    </div>\n    <div class=\"button-row\">\n      <a mat-flat-button color=\"primary\" [routerLink]=\"['/cases']\"><mat-icon>list</mat-icon></a>\n    </div>\n    <mat-card class=\"example-card\">\n      <mat-card-header>\n        <mat-card-title><h2>{{cases[0].countryregion}}</h2></mat-card-title>\n        <mat-card-subtitle>Last Updated: {{cases[0].lastupdate}}</mat-card-subtitle>\n      </mat-card-header>\n      <mat-card-content>\n          <mat-card class=\"docs-component-category-list-item\" style=\"margin-top: 20px;\">\n            <mat-card-header>\n                <mat-card-title><h2 class=\"blue\">{{cases[0].confirmed}}</h2></mat-card-title>\n                <mat-card-subtitle>Confirmed Cases</mat-card-subtitle>\n              </mat-card-header>\n          </mat-card>\n          <mat-card class=\"docs-component-category-list-item\">\n            <mat-card-header>\n                <mat-card-title><h2 class=\"red\">{{cases[0].deaths}}</h2></mat-card-title>\n                <mat-card-subtitle>Deaths</mat-card-subtitle>\n              </mat-card-header>\n          </mat-card>\n          <mat-card class=\"docs-component-category-list-item\">\n            <mat-card-header>\n                <mat-card-title><h2 class=\"green\">{{cases[0].recovered}}</h2></mat-card-title>\n                <mat-card-subtitle>Recovered</mat-card-subtitle>\n              </mat-card-header>\n          </mat-card>\n      </mat-card-content>      \n      <mat-card-actions>\n        <a mat-flat-button color=\"primary\" [routerLink]=\"['/edit-cases', cases._id]\"><mat-icon>edit</mat-icon> Cases</a>\n        <a mat-flat-button color=\"warn\" (click)=\"deleteCases(cases._id)\"><mat-icon>delete</mat-icon> Cases</a>\n      </mat-card-actions>\n    </mat-card>\n  </div>"
 
 /***/ }),
 
@@ -74,7 +74,7 @@ module.exports = "<p>cases-stat works!</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"example-container mat-elevation-z8\">\n    <h2>Corona Virus Cases List</h2>\n    <div class=\"example-loading-shade\"\n         *ngIf=\"isLoadingResults\">\n      <mat-spinner *ngIf=\"isLoadingResults\"></mat-spinner>\n    </div>\n    <div class=\"button-row\">\n      <a mat-flat-button color=\"primary\" [routerLink]=\"['/add-cases']\"><mat-icon>add</mat-icon> Cases</a>\n      <a mat-flat-button color=\"accent\" [routerLink]=\"['/cases-stat']\"><mat-icon>bar_chart</mat-icon> Statistic</a>\n    </div>\n    <div class=\"mat-elevation-z8\">\n      <table mat-table [dataSource]=\"data\" class=\"example-table\"\n             matSort matSortActive=\"name\" matSortDisableClear matSortDirection=\"asc\">\n  \n        <!-- Cases Name Column -->\n        <ng-container matColumnDef=\"name\">\n          <th mat-header-cell *matHeaderCellDef>Cases Name</th>\n          <td mat-cell *matCellDef=\"let row\">{{row.name}}</td>\n        </ng-container>\n  \n        <!-- Cases Age Column -->\n        <ng-container matColumnDef=\"age\">\n          <th mat-header-cell *matHeaderCellDef>Age</th>\n          <td mat-cell *matCellDef=\"let row\">{{row.age}}</td>\n        </ng-container>\n  \n        <!-- Cases Status Column -->\n        <ng-container matColumnDef=\"status\">\n          <th mat-header-cell *matHeaderCellDef>Status</th>\n          <td mat-cell *matCellDef=\"let row\">{{row.status}}</td>\n        </ng-container>\n  \n        <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n        <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\" [routerLink]=\"['/cases-details/', row._id]\"></tr>\n      </table>\n    </div>\n  </div>"
+module.exports = "<div class=\"example-container mat-elevation-z8\">\n    <h2 align=\"center\">Global</h2>\n    <div class=\"example-loading-shade\"\n         *ngIf=\"isLoadingResults\">\n      <mat-spinner *ngIf=\"isLoadingResults\"></mat-spinner>\n    </div>\n    <div align=\"center\">\n      <mat-card class=\"docs-component-category-list-item\" style=\"margin-top: 20px;\">\n        <mat-card-header>\n            <mat-card-title ><h2 class=\"blue\">{{globalData.confirmed}}</h2></mat-card-title>\n            <mat-card-subtitle>Confirmed Cases</mat-card-subtitle>\n          </mat-card-header>\n      </mat-card>\n      <mat-card class=\"docs-component-category-list-item\">\n        <mat-card-header>\n            <mat-card-title><h2 class=\"red\">{{globalData.deaths}}</h2></mat-card-title>\n            <mat-card-subtitle>Deaths</mat-card-subtitle>\n          </mat-card-header>\n      </mat-card>\n      <mat-card class=\"docs-component-category-list-item\">\n        <mat-card-header>\n            <mat-card-title><h2 class=\"green\">{{globalData.recovered}}</h2></mat-card-title>\n            <mat-card-subtitle>Recovered</mat-card-subtitle>\n          </mat-card-header>\n      </mat-card>\n    </div>\n    \n    <h2 align=\"center\">Stats by Country</h2>\n    <div class=\"button-row\">\n      <a mat-flat-button color=\"primary\" [routerLink]=\"['/add-cases']\"><mat-icon>add</mat-icon> Cases</a>\n      <a mat-flat-button color=\"accent\" [routerLink]=\"['/cases-stat']\"><mat-icon>bar_chart</mat-icon> Statistic</a>\n    </div>\n    <div class=\"mat-elevation-z8\">\n      <table mat-table [dataSource]=\"data\" class=\"example-table\"\n      matSort matSortActive=\"confirmed\" matSortDisableClear matSortDirection=\"desc\">\n\n     \n        <!-- Country Name Column -->\n        <ng-container matColumnDef=\"countryregion\">\n          <th mat-header-cell *matHeaderCellDef  mat-sort-header>Country Name</th>\n          <td mat-cell *matCellDef=\"let row\">{{row.countryregion}}</td>\n        </ng-container>\n  \n        <!-- Confirmed Case Column -->\n        <ng-container matColumnDef=\"confirmed\">\n          <th mat-header-cell *matHeaderCellDef mat-sort-header>Confirmed Case</th>\n          <td mat-cell *matCellDef=\"let row\">{{row.confirmed}}</td>\n        </ng-container>\n  \n        <!-- Deaths Column -->\n        <ng-container matColumnDef=\"deaths\">\n          <th mat-header-cell *matHeaderCellDef  mat-sort-header>Deaths</th>\n          <td mat-cell *matCellDef=\"let row\">{{row.deaths}}</td>\n        </ng-container>\n\n                \n        <!-- Cases Recovered Column -->\n        <ng-container matColumnDef=\"recovered\">\n            <th mat-header-cell *matHeaderCellDef  mat-sort-header>Recovered</th>\n            <td mat-cell *matCellDef=\"let row\">{{row.recovered}}</td>\n        </ng-container>\n\n        <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n        <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\" [routerLink]=\"['/cases-details/', row.countrycode? row.countrycode.iso2 : '']\"></tr>\n      </table>\n    </div>\n  </div>"
 
 /***/ }),
 
@@ -156,7 +156,9 @@ __webpack_require__.r(__webpack_exports__);
 var httpOptions = {
     headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]({ 'Content-Type': 'application/json' })
 };
-var apiUrl = '/api/';
+var apiUrl = 'https://wuhan-coronavirus-api.laeyoung.endpoint.ainize.ai/jhu-edu/latest?onlyCountries=true';
+var globalUrl = 'https://wuhan-coronavirus-api.laeyoung.endpoint.ainize.ai/jhu-edu/brief';
+//https://wuhan-coronavirus-api.laeyoung.endpoint.ainize.ai/jhu-edu/latest?iso2=US&onlyCountries=true
 var ApiService = /** @class */ (function () {
     function ApiService(http) {
         this.http = http;
@@ -170,16 +172,20 @@ var ApiService = /** @class */ (function () {
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(result);
         };
     };
+    ApiService.prototype.getGlobalCases = function () {
+        return this.http.get("" + globalUrl)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (cases) { return console.log('fetched global cases'); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError('getCases')));
+    };
     ApiService.prototype.getCases = function () {
         return this.http.get("" + apiUrl)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (cases) { return console.log('fetched cases'); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError('getCases', [])));
     };
     ApiService.prototype.getCasesById = function (id) {
-        var url = apiUrl + "/" + id;
+        var url = apiUrl + "/&iso2=" + id;
         return this.http.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (_) { return console.log("fetched cases id=" + id); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError("getCasesById id=" + id)));
     };
     ApiService.prototype.addCases = function (cases) {
-        return this.http.post(apiUrl, cases, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (c) { return console.log("added cases w/ id=" + c._id); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError('addCases')));
+        return this.http.post(apiUrl, cases, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (c) { return console.log("added cases w/ id=" + c.countryregion); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError('addCases')));
     };
     ApiService.prototype.updateCases = function (id, cases) {
         var url = apiUrl + "/" + id;
@@ -288,7 +294,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".container {\n  padding: 20px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvRDpcXFByb2plY3RzXFxjb3JvbmF2aXJ1cy1jYXNlcy9zcmNcXGFwcFxcYXBwLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxhQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY29udGFpbmVyIHtcclxuICAgIHBhZGRpbmc6IDIwcHg7XHJcbn0iLCIuY29udGFpbmVyIHtcbiAgcGFkZGluZzogMjBweDtcbn0iXX0= */"
+module.exports = ".container {\n  padding: 20px;\n}\n\n.right {\n  text-align: right;\n}\n\n.left {\n  text-align: left;\n}\n\n.center {\n  text-align: center;\n}\n\n.red {\n  color: #f3413b;\n}\n\n.blue {\n  color: #1c6cd4;\n}\n\n.green {\n  color: #24ad24;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvRDpcXFByb2plY3RzXFxjb3JvbmF2aXJ1cy1jYXNlcy9zcmNcXGFwcFxcYXBwLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxhQUFBO0FDQ0o7O0FERUE7RUFDSSxpQkFBQTtBQ0NKOztBREVBO0VBQ0ksZ0JBQUE7QUNDSjs7QURFQTtFQUNJLGtCQUFBO0FDQ0o7O0FERUE7RUFDSSxjQUFBO0FDQ0o7O0FERUE7RUFDRSxjQUFBO0FDQ0Y7O0FERUE7RUFDSSxjQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY29udGFpbmVyIHtcclxuICAgIHBhZGRpbmc6IDIwcHg7XHJcbn1cclxuXHJcbi5yaWdodCB7XHJcbiAgICB0ZXh0LWFsaWduOiByaWdodDtcclxufVxyXG5cclxuLmxlZnQge1xyXG4gICAgdGV4dC1hbGlnbjogbGVmdDtcclxufVxyXG5cclxuLmNlbnRlciB7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuXHJcbi5yZWQge1xyXG4gICAgY29sb3I6cmdiKDI0MywgNjUsIDU5KVxyXG59XHJcblxyXG4uYmx1ZSB7XHJcbiAgY29sb3I6IHJnYigyOCwgMTA4LCAyMTIpXHJcbn1cclxuXHJcbi5ncmVlbiB7XHJcbiAgICBjb2xvcjpyZ2IoMzYsIDE3MywgMzYpXHJcbn1cclxuXHJcbiIsIi5jb250YWluZXIge1xuICBwYWRkaW5nOiAyMHB4O1xufVxuXG4ucmlnaHQge1xuICB0ZXh0LWFsaWduOiByaWdodDtcbn1cblxuLmxlZnQge1xuICB0ZXh0LWFsaWduOiBsZWZ0O1xufVxuXG4uY2VudGVyIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4ucmVkIHtcbiAgY29sb3I6ICNmMzQxM2I7XG59XG5cbi5ibHVlIHtcbiAgY29sb3I6ICMxYzZjZDQ7XG59XG5cbi5ncmVlbiB7XG4gIGNvbG9yOiAjMjRhZDI0O1xufSJdfQ== */"
 
 /***/ }),
 
@@ -418,7 +424,7 @@ var AppModule = /** @class */ (function () {
                 _angular_material_slider__WEBPACK_IMPORTED_MODULE_22__["MatSliderModule"],
                 _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_23__["MatSlideToggleModule"],
                 _angular_material_button_toggle__WEBPACK_IMPORTED_MODULE_24__["MatButtonToggleModule"],
-                _angular_material_select__WEBPACK_IMPORTED_MODULE_25__["MatSelectModule"], ,
+                _angular_material_select__WEBPACK_IMPORTED_MODULE_25__["MatSelectModule"]
             ],
             providers: [],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
@@ -438,7 +444,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2Nhc2VzLWRldGFpbHMvY2FzZXMtZGV0YWlscy5jb21wb25lbnQuc2NzcyJ9 */"
+module.exports = "/* Structure */\n.example-container {\n  position: relative;\n  padding: 5px;\n}\n.example-loading-shade {\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 56px;\n  right: 0;\n  background: rgba(0, 0, 0, 0.15);\n  z-index: 1;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.mat-flat-button {\n  margin: 5px;\n}\n.docs-component-category-list-item {\n  display: inline-block;\n  margin: 20px;\n  vertical-align: top;\n  align-items: center;\n}\n.red {\n  color: #f3413b;\n}\n.blue {\n  color: #1c6cd4;\n}\n.green {\n  color: #24ad24;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY2FzZXMtZGV0YWlscy9EOlxcUHJvamVjdHNcXGNvcm9uYXZpcnVzLWNhc2VzL3NyY1xcYXBwXFxjYXNlcy1kZXRhaWxzXFxjYXNlcy1kZXRhaWxzLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9jYXNlcy1kZXRhaWxzL2Nhc2VzLWRldGFpbHMuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsY0FBQTtBQUNBO0VBQ0ksa0JBQUE7RUFDQSxZQUFBO0FDQ0o7QURFRTtFQUNFLGtCQUFBO0VBQ0EsTUFBQTtFQUNBLE9BQUE7RUFDQSxZQUFBO0VBQ0EsUUFBQTtFQUNBLCtCQUFBO0VBQ0EsVUFBQTtFQUNBLGFBQUE7RUFDQSxtQkFBQTtFQUNBLHVCQUFBO0FDQ0o7QURFRTtFQUNFLFdBQUE7QUNDSjtBREVFO0VBQ0kscUJBQUE7RUFDQSxZQUFBO0VBQ0EsbUJBQUE7RUFFQSxtQkFBQTtBQ0FOO0FER0U7RUFDRSxjQUFBO0FDQUo7QURHRTtFQUNBLGNBQUE7QUNBRjtBREdFO0VBQ0UsY0FBQTtBQ0FKIiwiZmlsZSI6InNyYy9hcHAvY2FzZXMtZGV0YWlscy9jYXNlcy1kZXRhaWxzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLyogU3RydWN0dXJlICovXHJcbi5leGFtcGxlLWNvbnRhaW5lciB7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICBwYWRkaW5nOiA1cHg7XHJcbiAgfVxyXG4gIFxyXG4gIC5leGFtcGxlLWxvYWRpbmctc2hhZGUge1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgdG9wOiAwO1xyXG4gICAgbGVmdDogMDtcclxuICAgIGJvdHRvbTogNTZweDtcclxuICAgIHJpZ2h0OiAwO1xyXG4gICAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjE1KTtcclxuICAgIHotaW5kZXg6IDE7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gIH1cclxuICBcclxuICAubWF0LWZsYXQtYnV0dG9uIHtcclxuICAgIG1hcmdpbjogNXB4O1xyXG4gIH1cclxuXHJcbiAgLmRvY3MtY29tcG9uZW50LWNhdGVnb3J5LWxpc3QtaXRlbSB7XHJcbiAgICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcclxuICAgICAgbWFyZ2luOiAyMHB4O1xyXG4gICAgICB2ZXJ0aWNhbC1hbGlnbjogdG9wO1xyXG4gICAgICAvLyB3aWR0aDogMjYwcHg7XHJcbiAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgfVxyXG5cclxuICAucmVkIHtcclxuICAgIGNvbG9yOnJnYigyNDMsIDY1LCA1OSlcclxuICB9XHJcbiAgXHJcbiAgLmJsdWUge1xyXG4gIGNvbG9yOiByZ2IoMjgsIDEwOCwgMjEyKVxyXG4gIH1cclxuICBcclxuICAuZ3JlZW4ge1xyXG4gICAgY29sb3I6cmdiKDM2LCAxNzMsIDM2KVxyXG4gIH1cclxuICAiLCIvKiBTdHJ1Y3R1cmUgKi9cbi5leGFtcGxlLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgcGFkZGluZzogNXB4O1xufVxuXG4uZXhhbXBsZS1sb2FkaW5nLXNoYWRlIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB0b3A6IDA7XG4gIGxlZnQ6IDA7XG4gIGJvdHRvbTogNTZweDtcbiAgcmlnaHQ6IDA7XG4gIGJhY2tncm91bmQ6IHJnYmEoMCwgMCwgMCwgMC4xNSk7XG4gIHotaW5kZXg6IDE7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufVxuXG4ubWF0LWZsYXQtYnV0dG9uIHtcbiAgbWFyZ2luOiA1cHg7XG59XG5cbi5kb2NzLWNvbXBvbmVudC1jYXRlZ29yeS1saXN0LWl0ZW0ge1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIG1hcmdpbjogMjBweDtcbiAgdmVydGljYWwtYWxpZ246IHRvcDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cblxuLnJlZCB7XG4gIGNvbG9yOiAjZjM0MTNiO1xufVxuXG4uYmx1ZSB7XG4gIGNvbG9yOiAjMWM2Y2Q0O1xufVxuXG4uZ3JlZW4ge1xuICBjb2xvcjogIzI0YWQyNDtcbn0iXX0= */"
 
 /***/ }),
 
@@ -454,13 +460,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CasesDetailsComponent", function() { return CasesDetailsComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _api_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../api.service */ "./src/app/api.service.ts");
+
+
 
 
 var CasesDetailsComponent = /** @class */ (function () {
-    function CasesDetailsComponent() {
+    function CasesDetailsComponent(route, api, router) {
+        this.route = route;
+        this.api = api;
+        this.router = router;
+        this.cases = { countryregion: '', confirmed: null, deaths: null, recovered: null, countrycode: null, lastupdate: '' };
+        this.isLoadingResults = true;
     }
     CasesDetailsComponent.prototype.ngOnInit = function () {
+        this.getCasesDetails(this.route.snapshot.params.id);
     };
+    CasesDetailsComponent.prototype.getCasesDetails = function (id) {
+        var _this = this;
+        this.api.getCasesById(id)
+            .subscribe(function (data) {
+            _this.cases = data;
+            console.log(_this.cases);
+            _this.isLoadingResults = false;
+        });
+    };
+    CasesDetailsComponent.ctorParameters = function () { return [
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
+        { type: _api_service__WEBPACK_IMPORTED_MODULE_3__["ApiService"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+    ]; };
     CasesDetailsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-cases-details',
@@ -526,7 +556,7 @@ var CasesStatComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* Structure */\n.example-container {\n  position: relative;\n  padding: 5px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY2FzZXMvRDpcXFByb2plY3RzXFxjb3JvbmF2aXJ1cy1jYXNlcy9zcmNcXGFwcFxcY2FzZXNcXGNhc2VzLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9jYXNlcy9jYXNlcy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxjQUFBO0FBQ0E7RUFDSSxrQkFBQTtFQUNBLFlBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL2Nhc2VzL2Nhc2VzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLyogU3RydWN0dXJlICovXHJcbi5leGFtcGxlLWNvbnRhaW5lciB7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICBwYWRkaW5nOiA1cHg7XHJcbiAgfSIsIi8qIFN0cnVjdHVyZSAqL1xuLmV4YW1wbGUtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICBwYWRkaW5nOiA1cHg7XG59Il19 */"
+module.exports = "/* Structure */\n.example-container {\n  position: relative;\n  padding: 5px;\n}\ntable {\n  width: 100%;\n}\nth.mat-sort-header-sorted {\n  color: black;\n}\n.docs-component-category-list-item {\n  display: inline-block;\n  margin: 20px;\n  vertical-align: top;\n  align-content: center;\n}\n.right {\n  text-align: right;\n}\n.left {\n  text-align: left;\n}\n.center {\n  text-align: center;\n}\n.red {\n  color: #f3413b;\n}\n.blue {\n  color: #1c6cd4;\n}\n.green {\n  color: #24ad24;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY2FzZXMvRDpcXFByb2plY3RzXFxjb3JvbmF2aXJ1cy1jYXNlcy9zcmNcXGFwcFxcY2FzZXNcXGNhc2VzLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9jYXNlcy9jYXNlcy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxjQUFBO0FBQ0E7RUFDSSxrQkFBQTtFQUNBLFlBQUE7QUNDSjtBREVFO0VBQ0UsV0FBQTtBQ0NKO0FERUU7RUFDRSxZQUFBO0FDQ0o7QURFRTtFQUNFLHFCQUFBO0VBQ0EsWUFBQTtFQUNBLG1CQUFBO0VBRUEscUJBQUE7QUNBSjtBREdBO0VBQ0UsaUJBQUE7QUNBRjtBREdBO0VBQ0UsZ0JBQUE7QUNBRjtBREdBO0VBQ0Usa0JBQUE7QUNBRjtBREdBO0VBQ0UsY0FBQTtBQ0FGO0FER0E7RUFDQSxjQUFBO0FDQUE7QURHQTtFQUNFLGNBQUE7QUNBRiIsImZpbGUiOiJzcmMvYXBwL2Nhc2VzL2Nhc2VzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLyogU3RydWN0dXJlICovXHJcbi5leGFtcGxlLWNvbnRhaW5lciB7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICBwYWRkaW5nOiA1cHg7XHJcbiAgfVxyXG5cclxuICB0YWJsZSB7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICB9XHJcbiAgXHJcbiAgdGgubWF0LXNvcnQtaGVhZGVyLXNvcnRlZCB7XHJcbiAgICBjb2xvcjogYmxhY2s7XHJcbiAgfVxyXG5cclxuICAuZG9jcy1jb21wb25lbnQtY2F0ZWdvcnktbGlzdC1pdGVtIHtcclxuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcclxuICAgIG1hcmdpbjogMjBweDtcclxuICAgIHZlcnRpY2FsLWFsaWduOiB0b3A7XHJcbiAgICAvLyB3aWR0aDogMjYwcHg7XHJcbiAgICBhbGlnbi1jb250ZW50OiBjZW50ZXI7XHJcbn1cclxuXHJcbi5yaWdodCB7XHJcbiAgdGV4dC1hbGlnbjogcmlnaHQ7XHJcbn1cclxuXHJcbi5sZWZ0IHtcclxuICB0ZXh0LWFsaWduOiBsZWZ0O1xyXG59XHJcblxyXG4uY2VudGVyIHtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuXHJcbi5yZWQge1xyXG4gIGNvbG9yOnJnYigyNDMsIDY1LCA1OSlcclxufVxyXG5cclxuLmJsdWUge1xyXG5jb2xvcjogcmdiKDI4LCAxMDgsIDIxMilcclxufVxyXG5cclxuLmdyZWVuIHtcclxuICBjb2xvcjpyZ2IoMzYsIDE3MywgMzYpXHJcbn1cclxuIiwiLyogU3RydWN0dXJlICovXG4uZXhhbXBsZS1jb250YWluZXIge1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIHBhZGRpbmc6IDVweDtcbn1cblxudGFibGUge1xuICB3aWR0aDogMTAwJTtcbn1cblxudGgubWF0LXNvcnQtaGVhZGVyLXNvcnRlZCB7XG4gIGNvbG9yOiBibGFjaztcbn1cblxuLmRvY3MtY29tcG9uZW50LWNhdGVnb3J5LWxpc3QtaXRlbSB7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgbWFyZ2luOiAyMHB4O1xuICB2ZXJ0aWNhbC1hbGlnbjogdG9wO1xuICBhbGlnbi1jb250ZW50OiBjZW50ZXI7XG59XG5cbi5yaWdodCB7XG4gIHRleHQtYWxpZ246IHJpZ2h0O1xufVxuXG4ubGVmdCB7XG4gIHRleHQtYWxpZ246IGxlZnQ7XG59XG5cbi5jZW50ZXIge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG5cbi5yZWQge1xuICBjb2xvcjogI2YzNDEzYjtcbn1cblxuLmJsdWUge1xuICBjb2xvcjogIzFjNmNkNDtcbn1cblxuLmdyZWVuIHtcbiAgY29sb3I6ICMyNGFkMjQ7XG59Il19 */"
 
 /***/ }),
 
@@ -543,22 +573,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _api_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../api.service */ "./src/app/api.service.ts");
+/* harmony import */ var _angular_material_sort__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material/sort */ "./node_modules/@angular/material/esm5/sort.es5.js");
+/* harmony import */ var _angular_material_table__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material/table */ "./node_modules/@angular/material/esm5/table.es5.js");
+
+
 
 
 
 var CasesComponent = /** @class */ (function () {
     function CasesComponent(api) {
         this.api = api;
-        this.displayedColumns = ['name', 'age', 'status'];
-        this.data = [];
+        this.displayedColumns = ['countryregion', 'confirmed', 'deaths', 'recovered'];
         this.isLoadingResults = true;
     }
     CasesComponent.prototype.ngOnInit = function () {
         var _this = this;
+        // this.data.sort = this.sort;
         this.api.getCases()
             .subscribe(function (res) {
-            _this.data = res;
+            _this.data = new _angular_material_table__WEBPACK_IMPORTED_MODULE_4__["MatTableDataSource"](res);
+            _this.data.sort = _this.sort;
             console.log(_this.data);
+            _this.isLoadingResults = false;
+        }, function (err) {
+            console.log(err);
+            _this.isLoadingResults = false;
+        });
+        this.api.getGlobalCases()
+            .subscribe(function (res) {
+            _this.globalData = res;
+            console.log(_this.globalData);
             _this.isLoadingResults = false;
         }, function (err) {
             console.log(err);
@@ -568,6 +612,9 @@ var CasesComponent = /** @class */ (function () {
     CasesComponent.ctorParameters = function () { return [
         { type: _api_service__WEBPACK_IMPORTED_MODULE_2__["ApiService"] }
     ]; };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material_sort__WEBPACK_IMPORTED_MODULE_3__["MatSort"], { static: true })
+    ], CasesComponent.prototype, "sort", void 0);
     CasesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-cases',

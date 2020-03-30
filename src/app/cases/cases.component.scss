@@ -11,3 +11,35 @@
   th.mat-sort-header-sorted {
     color: black;
   }
+
+  .docs-component-category-list-item {
+    display: inline-block;
+    margin: 20px;
+    vertical-align: top;
+    // width: 260px;
+    align-content: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.red {
+  color:rgb(243, 65, 59)
+}
+
+.blue {
+color: rgb(28, 108, 212)
+}
+
+.green {
+  color:rgb(36, 173, 36)
+}

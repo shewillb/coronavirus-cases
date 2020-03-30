@@ -1,9 +1,31 @@
 <div class="example-container mat-elevation-z8">
-    <h2>Corona Virus Cases List</h2>
+    <h2 align="center">Global</h2>
     <div class="example-loading-shade"
          *ngIf="isLoadingResults">
       <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
     </div>
+    <div align="center">
+      <mat-card class="docs-component-category-list-item" style="margin-top: 20px;">
+        <mat-card-header>
+            <mat-card-title ><h2 class="blue">{{globalData.confirmed}}</h2></mat-card-title>
+            <mat-card-subtitle>Confirmed Cases</mat-card-subtitle>
+          </mat-card-header>
+      </mat-card>
+      <mat-card class="docs-component-category-list-item">
+        <mat-card-header>
+            <mat-card-title><h2 class="red">{{globalData.deaths}}</h2></mat-card-title>
+            <mat-card-subtitle>Deaths</mat-card-subtitle>
+          </mat-card-header>
+      </mat-card>
+      <mat-card class="docs-component-category-list-item">
+        <mat-card-header>
+            <mat-card-title><h2 class="green">{{globalData.recovered}}</h2></mat-card-title>
+            <mat-card-subtitle>Recovered</mat-card-subtitle>
+          </mat-card-header>
+      </mat-card>
+    </div>
+    
+    <h2 align="center">Stats by Country</h2>
     <div class="button-row">
       <a mat-flat-button color="primary" [routerLink]="['/add-cases']"><mat-icon>add</mat-icon> Cases</a>
       <a mat-flat-button color="accent" [routerLink]="['/cases-stat']"><mat-icon>bar_chart</mat-icon> Statistic</a>
@@ -22,7 +44,7 @@
         <!-- Confirmed Case Column -->
         <ng-container matColumnDef="confirmed">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Confirmed Case</th>
-          <td mat-cell *matCellDef="let row" >{{row.confirmed}}</td>
+          <td mat-cell *matCellDef="let row">{{row.confirmed}}</td>
         </ng-container>
   
         <!-- Deaths Column -->

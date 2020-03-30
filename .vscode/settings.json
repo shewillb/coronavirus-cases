@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/739fb373-1927-4dc4-b579-fa99d4d37b45/resourceGroups/WebApp/providers/Microsoft.Web/sites/covid-stat",
+    "appService.deploySubpath": "dist\\coronavirus-cases"
+}

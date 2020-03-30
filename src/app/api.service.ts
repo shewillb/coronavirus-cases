@@ -9,7 +9,7 @@ const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
 const apiUrl = 'https://wuhan-coronavirus-api.laeyoung.endpoint.ainize.ai/jhu-edu/latest?onlyCountries=true';
-
+const globalUrl = 'https://wuhan-coronavirus-api.laeyoung.endpoint.ainize.ai/jhu-edu/brief'
 //https://wuhan-coronavirus-api.laeyoung.endpoint.ainize.ai/jhu-edu/latest?iso2=US&onlyCountries=true
 
 @Injectable({
@@ -33,6 +33,15 @@ export class ApiService {
       return of(result as T);
     };
   }
+
+  getGlobalCases(): Observable<Cases> {
+    return this.http.get<Cases>(`${globalUrl}`)
+      .pipe(
+        tap(cases => console.log('fetched global cases')),
+        catchError(this.handleError<Cases>('getCases'))
+      );
+  }
+
   getCases(): Observable<Cases[]> {
     return this.http.get<Cases[]>(`${apiUrl}`)
       .pipe(
