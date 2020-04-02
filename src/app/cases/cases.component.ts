@@ -3,6 +3,7 @@ import { ApiService } from '../api.service';
 import { Cases } from '../models/cases';
 import { MatSort } from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class CasesComponent implements OnInit {
   globalData: Cases;
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   ngOnInit(): void {
     // this.data.sort = this.sort;
@@ -26,6 +28,7 @@ export class CasesComponent implements OnInit {
     .subscribe((res: any) => {
       this.data = new MatTableDataSource(res);
       this.data.sort = this.sort;
+      this.data.paginator = this.paginator;
       console.log(this.data);
       this.isLoadingResults = false;
     }, err => {

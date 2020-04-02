@@ -62,6 +62,7 @@
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/cases-details/', row.countrycode? row.countrycode.iso2 : '']"></tr>
-      </table>
+      </table><mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+
     </div>
   </div>
