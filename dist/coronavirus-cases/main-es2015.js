@@ -41,7 +41,7 @@ module.exports = "<p>add-cases works!</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n<router-outlet></router-outlet>\n</div>\n\n<footer class=\"footer\">\n    <div class=\"docs-footer-copyright\">\n        <div>\n          <span class=\"grey\">Made out of boredome</span>\n          <span class=\"grey\">© 2020 Sheryl B</span>\n        </div>\n      </div>\n    </footer>"
+module.exports = "<div class=\"container\">\n<router-outlet></router-outlet>\n</div>\n\n<footer class=\"footer\">\n    <div class=\"docs-footer-copyright\">\n        <div>\n          <span class=\"grey\">Made out of boredom</span>\n          <span class=\"grey\">© 2020 Sheryl B</span>\n        </div>\n      </div>\n    </footer>"
 
 /***/ }),
 
